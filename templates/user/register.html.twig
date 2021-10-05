@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+        
+
+        <section class="bg-light mb-5 mt-5">
+        <div class="container pb-5 pt-5">
+            <div class="row pb-5 pt-5">
+                <div class="col-md-10 mx-auto">
+                    <h1 class="font-weight-bold display-4 mt-2 ml-3 mb-5">Create your account.</h1>
+
+                    {{ form(form, {attr: {novalidate: ''}}) }}
+
+                    <div class="mt-4">
+                        <p>
+                            <a href="/password-recovering.html" title="Get a new password sent by email">Forgotten your password ? <i class="far fa-arrow-alt-circle-right"></i></a>
+                            <br>
+                            <a href="/login" title="Log in to your SensioTV account">You have an account ? Log in now. <i class="far fa-arrow-alt-circle-right"></i></a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
+
+{% block content %}
+        <section id="central-section" class="bg-light p-5">
+        <div class="container jumbotron p-5 img-rounded">
+            <div class="row mb-5">
+                <div class="col-lg">
+                    <h1 class="display-4 font-weight-bold">Imported movies.</h1>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-3 text-center text-md-left pb-3">
+                    <p class="lead font-weight-bold">Latest Movies By Genre</p>
+                    <ul class="list-unstyled">
+                        <li><a href="#" title="Choose your movie by genre">Action</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Adventure</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Animation</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Biography</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Comedy</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Crime</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Drama</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Family</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Fantasy</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Film-Noir</a></li>
+                        <li><a href="#" title="Choose your movie by genre">History</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Horror</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Music</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Musical</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Mystery</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Romance</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Sci-Fi</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Sport</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Thriller</a></li>
+                        <li><a href="#" title="Choose your movie by genre">War</a></li>
+                        <li><a href="#" title="Choose your movie by genre">Western</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9 table-responsive img-rounded bg-light p-4">
+                    <!-- Latest movies -->
+                    {% for movie in movies %}
+                        {{ macros.render_imported_movie(movie) }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
