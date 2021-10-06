@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserType;
+use App\Manager\UserManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ class UserController extends AbstractController
     /**
      * @Route("/register")
      */
-    public function register(Request $request, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, EntityManagerInterface $entityManager, UserManager $userManager): Response
     {
         $form = $this->createForm(UserType::class);
 
@@ -24,6 +25,7 @@ class UserController extends AbstractController
             /** @var User $user */
             $user = $form->getData();
 
+            //$userManager->register($user);
             dump($user);
             $entityManager->persist($user);
             $entityManager->flush();
