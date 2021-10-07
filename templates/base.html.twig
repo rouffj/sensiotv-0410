@@ -1,4 +1,4 @@
-
+{% import 'macros.html.twig' as macros %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +43,7 @@
             </li>
         </ul>
         <ul class="navbar-nav text-center">
-            <li class="nav-item active"><a class="nav-link" href="/register" title="Register or log in"><i class="fas fa-plus-square"></i></a></li>
-            <li class="nav-item active"><a class="nav-link" href="/login" title="Register or log in"><i class="fas fa-user"></i></a></li>
-
+            {{ macros.login_section() }}
         </ul>
 
 

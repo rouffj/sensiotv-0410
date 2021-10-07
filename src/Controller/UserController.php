@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\UserType;
 use App\Manager\UserManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
@@ -15,7 +17,7 @@ class UserController extends AbstractController
     /**
      * @Route("/register")
      */
-    public function register(Request $request, EntityManagerInterface $entityManager, UserManager $userManager): Response
+    public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(UserType::class);
 
@@ -25,6 +27,8 @@ class UserController extends AbstractController
             /** @var User $user */
             $user = $form->getData();
 
+            $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
+            $user->setPassword($hashedPassword);
             //$userManager->register($user);
             dump($user);
             $entityManager->persist($user);
@@ -34,13 +38,5 @@ class UserController extends AbstractController
         return $this->render('user/register.html.twig', [
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/login")
-     */
-    public function login(): Response
-    {
-        return $this->render('user/signin.html.twig');
     }
 }

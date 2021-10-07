@@ -48,3 +48,7 @@ services:
     #        $omdbClient: '@Symfony\Contracts\HttpClient\HttpClientInterface'
     #        $omdbToken: 28c5b7b1
     #        $omdbHost: https://www.omdbapi.com
+
+    App\EventListener\MovieListener:
+        tags:
+            - { name: 'doctrine.event_listener', event: 'postPersist', entity: 'App\Entity\Movie' }

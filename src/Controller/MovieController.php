@@ -8,10 +8,13 @@ use App\Omdb\OmdbClient;
 use App\Repository\MovieRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+
 
 class MovieController extends AbstractController
 {
@@ -68,6 +71,7 @@ class MovieController extends AbstractController
 
     /**
      * @Route("/movie/{imdbId}/import", name="movie_import")
+     * @IsGranted("ROLE_USER", message="You should be admin to import movies")
      */
     public function import(string $imdbId, OmdbClient $omdbClient, EntityManagerInterface $entityManager): Response
     {
